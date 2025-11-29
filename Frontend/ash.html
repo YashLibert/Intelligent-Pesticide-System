@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Intelligent Pesticide System Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="AI-powered plant health monitoring, precision spraying control, and blockchain traceability.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="dash.css"> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container" id="dashboard-root">
+        <header class="header">
+            <div class="brand">
+                <div class="logo">🧠</div>
+                <div>
+                    <h1>Intelligent Pesticide System</h1>
+                    <div class="small text-gradient">Agentic AI • Precision Spraying • Immutable Ledger</div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="logoutBtn" class="button alt">Logout</button>
+            </div>
+        </header>
+
+        <div id="dash_msg"></div>
+
+        <main class="main-dash-grid">
+            
+            <div class="left-col">
+                <article class="card">
+                    <h3 class="card-title">AI Disease Detection 🔬</h3>
+                    <p class="small">Upload an image for instant plant health analysis.</p>
+                    
+                    <form id="detectForm" class="detect-form">
+                        <label for="plantImage" class="file-upload-label">
+                            <span id="file-name-display">Upload Plant Image</span>
+                            <input type="file" id="plantImage" name="plantImage" accept="image/*" required>
+                            <span class="file-icon">📁</span>
+                        </label>
+                        <div id="image-preview" class="image-preview-area"></div>
+                        <button type="submit" class="button primary">Analyze Health</button>
+                    </form>
+
+                    <div id="detection_result" class="result-area">
+                        <h4 class="result-title">Analysis Result:</h4>
+                        <p class="text-secondary">Awaiting upload...</p>
+                    </div>
+                </article>
+
+                <div class="grid cols-2">
+                    <article class="stat-card">
+                        <div class="stat-label">Total Reward Tokens 🪙</div>
+                        <div id="total_rewards" class="stat-value text-gradient">Loading...</div> 
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-label">Sprays Logged (30 Days)</div>
+                        <div class="stat-value text-accent">14</div>
+                    </article>
+                </div>
+                
+                <article class="card">
+                    <h3 class="card-title">Precision Spray Control 💧</h3>
+                    <p class="small">Record a manual spray event or approve an automated one.</p>
+                    <form id="recordForm">
+                        <select name="plant" id="plantSelect" required>
+                            <option value="">Select Target Plant</option>
+                            <option value="65a3d7e7c9f80b2a3a4c5d6e">Tomato Crop A</option>
+                        </select>
+                        <input type="number" name="pesticideAmount" placeholder="Pesticide Dose (ml)" required min="1">
+                        <input type="text" name="diseaseDetected" placeholder="Disease (e.g., Late Blight)" required>
+                        <input type="number" name="infectionLevel" placeholder="Infection Level (0-100%)" required min="0" max="100">
+                        <button type="submit" class="button secondary">Record Spray Event</button>
+                    </form>
+                </article>
+            </div>
+
+            <div class="right-col">
+                <article class="card">
+                    <h3 class="card-title">Blockchain Ledger View 🔗</h3>
+                    <p class="small">Immutable record of all spray and detection events.</p>
+                    <div id="ledger_area" class="ledger-view">
+                        <pre style="white-space:pre-wrap; color: var(--text-secondary);">
+[
+  // Blockchain data will load here...
+]
+                        </pre>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">System Activity Log 📅</h3>
+                    <div class="table-container">
+                        <table id="spray_history_table" class="data-table">
+                            <thead>
+                                <tr><th>Plant ID</th><th>Time</th><th>Dose (ml)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><div class="data-chip">Loading...</div></td><td>...</td><td>...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    </article>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="small">
+                🌾 Intelligent Pesticide System | Powered by AI & Blockchain<br>
+                Real-time disease detection • Precision agriculture
+            </div>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+    </body>
+</html>
